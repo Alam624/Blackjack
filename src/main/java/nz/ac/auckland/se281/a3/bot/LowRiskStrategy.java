@@ -21,7 +21,7 @@ public class LowRiskStrategy implements Strategy {
 
 	@Override
 	public int Bet() {
-		return (rand.nextInt(30) + 1);
+		return (rand.nextInt(41) + 10);
 	}
 
 }
