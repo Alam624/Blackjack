@@ -21,7 +21,7 @@ public class RandomStrategy implements Strategy {
 
 	@Override
 	public int Bet() {
-		return rand.nextInt(101);
+		return (rand.nextInt(100) + 1);
 	}
 
 }
