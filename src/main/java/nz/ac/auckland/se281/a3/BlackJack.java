@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nz.ac.auckland.se281.a3.bot.Bot;
-import nz.ac.auckland.se281.a3.bot.HighRiskStrategy;
-import nz.ac.auckland.se281.a3.bot.LowRiskStrategy;
-import nz.ac.auckland.se281.a3.bot.RandomStrategy;
 import nz.ac.auckland.se281.a3.bot.Strategy;
+import nz.ac.auckland.se281.a3.bot.StrategyFactory;
 import nz.ac.auckland.se281.a3.dealer.Dealer;
 
 /**
@@ -86,22 +84,8 @@ public class BlackJack {
 		Bot bot1 = new Bot("Bot1");
 		Bot bot2 = new Bot("Bot2");
 		String botStrategyString = getBotStrategy(); // UNCOMMENT THIS
-		Strategy botStrategy = null;
 		// create and set Bots strategy here
-		switch (botStrategyString) {
-		case "R":
-			botStrategy = new RandomStrategy();
-			break;
-		case "LR":
-			botStrategy = new LowRiskStrategy();
-			break;
-		case "HR":
-			botStrategy = new HighRiskStrategy();
-			break;
-		default:
-			break;
-
-		}
+		Strategy botStrategy = StrategyFactory.createStrategy(botStrategyString);
 		bot1.SetStrategy(botStrategy);
 		bot2.SetStrategy(botStrategy);
 		players.add(bot1);
