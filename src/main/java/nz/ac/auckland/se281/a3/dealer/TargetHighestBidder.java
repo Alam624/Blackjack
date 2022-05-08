@@ -13,6 +13,7 @@ public class TargetHighestBidder implements DealerStrategy {
 
 	public TargetHighestBidder(BlackJack currentGame) {
 		this.players = currentGame.getPlayers();
+
 	}
 
 	@Override
@@ -20,7 +21,7 @@ public class TargetHighestBidder implements DealerStrategy {
 
 		Player target = getMaxBidder(players.get(0), players.get(1), players.get(2));
 		if (!target.getHand().isBlackJack()) {
-			if (dealerHand.getScore() >= target.getHand().getScore()) {
+			if (dealerHand.getScore() >= target.getHand().getScore() || target.getHand().isBust()) {
 				return Action.HOLD;
 			} else {
 				return Action.HIT;
@@ -32,11 +33,6 @@ public class TargetHighestBidder implements DealerStrategy {
 				return Action.HIT;
 			}
 		}
-	}
-
-	@Override
-	public String toString() {
-		return "Targeting the Highest Bidder";
 	}
 
 	private Player getMaxBidder(Player p1, Player b1, Player b2) {

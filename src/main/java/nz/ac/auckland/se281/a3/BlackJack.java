@@ -100,7 +100,6 @@ public class BlackJack {
 	 */
 	protected void initDealer() {
 		// set the initial strategy using the Strategy pattern
-
 		dealer = new Dealer("Dealer");
 		dealer.SetStrategy(new TargetHighestBidder(this));
 	}
@@ -147,12 +146,13 @@ public class BlackJack {
 
 	private String winLoss(Player player, int round) {
 
-		if (dealer.getHand().isBlackJack()) {
+		if (dealer.getHand().isBlackJack() || player.getHand().isBust()) {
 			player.addLoss();
 			return "Round " + round + ": " + player.getName() + " lost $" + players.get(0).getHand().getBet();
 		}
 
-		if (player.getHand().isBlackJack() || player.getHand().getScore() > dealer.getHand().getScore()) {
+		if (player.getHand().isBlackJack() || player.getHand().getScore() > dealer.getHand().getScore()
+				|| dealer.getHand().isBust()) {
 			player.addWin();
 			return "Round " + round + ": " + player.getName() + " won $" + players.get(0).getHand().getBet();
 		}
