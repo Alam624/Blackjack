@@ -8,6 +8,7 @@ import nz.ac.auckland.se281.a3.bot.Strategy;
 import nz.ac.auckland.se281.a3.bot.StrategyFactory;
 import nz.ac.auckland.se281.a3.dealer.Dealer;
 import nz.ac.auckland.se281.a3.dealer.TargetHighestBidder;
+import nz.ac.auckland.se281.a3.dealer.TargetTopWinner;
 
 /**
  * Unless it is specified in the JavaDoc, you cannot change any methods.
@@ -19,8 +20,6 @@ public class BlackJack {
 	private List<Player> players;
 	private Dealer dealer;
 	private Deck deck;
-	int[] wins = new int[] { 0, 0, 0 };
-	int[] losses = new int[] { 0, 0, 0 };
 
 	public BlackJack(Deck deck) {
 		this.deck = deck;
@@ -101,6 +100,7 @@ public class BlackJack {
 	 */
 	protected void initDealer() {
 		// set the initial strategy using the Strategy pattern
+
 		dealer = new Dealer("Dealer");
 		dealer.SetStrategy(new TargetHighestBidder(this));
 	}
@@ -111,10 +111,31 @@ public class BlackJack {
 	 */
 	protected void printAndUpdateResults(int round) {
 
-		System.out.println("----- The dealer starts with " + dealer.getStrategy().toString() + "\" strategy");
+		Player netWinner = getNetWinner();
+
 		System.out.println(winLoss(players.get(0), round));
 		System.out.println(winLoss(players.get(1), round));
 		System.out.println(winLoss(players.get(2), round));
+		if (netWinner.getNetWins() >= 2) {
+			dealer.SetStrategy(new TargetTopWinner(this));
+		} else {
+			dealer.SetStrategy(new TargetHighestBidder(this));
+		}
+	}
+
+	public Player getNetWinner() {
+
+		Player netWinner;
+
+		netWinner = players.get(0);
+		if (players.get(1).getNetWins() > netWinner.getNetWins()) {
+			netWinner = players.get(1);
+		}
+		if (players.get(2).getNetWins() > netWinner.getNetWins()) {
+			netWinner = players.get(2);
+		}
+
+		return netWinner;
 	}
 
 	/**
@@ -127,13 +148,16 @@ public class BlackJack {
 	private String winLoss(Player player, int round) {
 
 		if (dealer.getHand().isBlackJack()) {
+			player.addLoss();
 			return "Round " + round + ": " + player.getName() + " lost $" + players.get(0).getHand().getBet();
 		}
 
 		if (player.getHand().isBlackJack() || player.getHand().getScore() > dealer.getHand().getScore()) {
+			player.addWin();
 			return "Round " + round + ": " + player.getName() + " won $" + players.get(0).getHand().getBet();
 		}
 
+		player.addLoss();
 		return "Round " + round + ": " + player.getName() + " lost $" + players.get(0).getHand().getBet();
 	}
 

@@ -7,6 +7,21 @@ package nz.ac.auckland.se281.a3;
  */
 public abstract class Player extends Participant {
 
+	private int wins = 0;
+	private int losses = 0;
+
+	public void addWin() {
+		wins += 1;
+	}
+
+	public void addLoss() {
+		losses += 1;
+	}
+
+	public int getNetWins() {
+		return wins - losses;
+	}
+
 	public Player(String name) {
 		super(name);
 	}
