@@ -111,6 +111,10 @@ public class BlackJack {
 	 */
 	protected void printAndUpdateResults(int round) {
 
+		System.out.println("----- The dealer starts with " + dealer.getStrategy().toString() + "\" strategy");
+		System.out.println(winLoss(players.get(0), round));
+		System.out.println(winLoss(players.get(1), round));
+		System.out.println(winLoss(players.get(2), round));
 	}
 
 	/**
@@ -118,6 +122,19 @@ public class BlackJack {
 	 */
 	protected void printGameStatistics() {
 
+	}
+
+	private String winLoss(Player player, int round) {
+
+		if (dealer.getHand().isBlackJack()) {
+			return "Round " + round + ": " + player.getName() + " lost $" + players.get(0).getHand().getBet();
+		}
+
+		if (player.getHand().isBlackJack() || player.getHand().getScore() > dealer.getHand().getScore()) {
+			return "Round " + round + ": " + player.getName() + " won $" + players.get(0).getHand().getBet();
+		}
+
+		return "Round " + round + ": " + player.getName() + " lost $" + players.get(0).getHand().getBet();
 	}
 
 }

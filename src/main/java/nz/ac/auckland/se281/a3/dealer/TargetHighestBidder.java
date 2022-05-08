@@ -34,6 +34,11 @@ public class TargetHighestBidder implements DealerStrategy {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "Targeting the Highest Bidder";
+	}
+
 	private Player getMaxBidder(Player p1, Player b1, Player b2) {
 		Player maxBidder = p1;
 
