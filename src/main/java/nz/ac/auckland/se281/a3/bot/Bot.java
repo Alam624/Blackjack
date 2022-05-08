@@ -9,6 +9,7 @@ import nz.ac.auckland.se281.a3.Player;
 public class Bot extends Player {
 
 	private Strategy strategy;
+	private int bet;
 
 	public Bot(String name) {
 		super(name);
@@ -18,6 +19,10 @@ public class Bot extends Player {
 		this.strategy = strategy;
 	}
 
+	public int getCurrentBet() {
+		return bet;
+	}
+
 	@Override
 	public Action decideAction(Hand hand) {
 		return this.strategy.Action(hand);
@@ -25,7 +30,8 @@ public class Bot extends Player {
 
 	@Override
 	public int makeABet() {
-		return strategy.Bet();
+		bet = this.strategy.Bet();
+		return bet;
 	}
 
 }

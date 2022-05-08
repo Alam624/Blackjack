@@ -18,6 +18,8 @@ public class BlackJack {
 	private List<Player> players;
 	private Dealer dealer;
 	private Deck deck;
+	int[] wins = new int[] { 0, 0, 0 };
+	int[] losses = new int[] { 0, 0, 0 };
 
 	public BlackJack(Deck deck) {
 		this.deck = deck;
