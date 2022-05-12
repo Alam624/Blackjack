@@ -120,6 +120,7 @@ public class BlackJack {
 		} else {
 			dealer.SetStrategy(new TargetHighestBidder(this));
 		}
+		
 	}
 
 	public Player getNetWinner() {
@@ -148,17 +149,17 @@ public class BlackJack {
 
 		if (dealer.getHand().isBlackJack() || player.getHand().isBust()) {
 			player.addLoss();
-			return "Round " + round + ": " + player.getName() + " lost $" + players.get(0).getHand().getBet();
+			return "Round " + round + ": " + player.getName() + " lost " + player.getHand().getBet() + " chips";
 		}
 
 		if (player.getHand().isBlackJack() || player.getHand().getScore() > dealer.getHand().getScore()
 				|| dealer.getHand().isBust()) {
 			player.addWin();
-			return "Round " + round + ": " + player.getName() + " won $" + players.get(0).getHand().getBet();
+			return "Round " + round + ": " + player.getName() + " won " + player.getHand().getBet() + " chips";
 		}
 
 		player.addLoss();
-		return "Round " + round + ": " + player.getName() + " lost $" + players.get(0).getHand().getBet();
+		return "Round " + round + ": " + player.getName() + " lost " + player.getHand().getBet() + " chips";
 	}
 
 }
