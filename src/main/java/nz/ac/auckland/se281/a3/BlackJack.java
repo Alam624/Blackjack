@@ -85,7 +85,7 @@ public class BlackJack {
 	protected void initBots() {
 		Bot bot1 = new Bot("Bot1");
 		Bot bot2 = new Bot("Bot2");
-		String botStrategyString = getBotStrategy(); // UNCOMMENT THIS
+		String botStrategyString = getBotStrategy();
 		// create and set Bots strategy here
 		Strategy botStrategy = StrategyFactory.createStrategy(botStrategyString);
 		bot1.SetStrategy(botStrategy);
@@ -120,7 +120,7 @@ public class BlackJack {
 		} else {
 			dealer.SetStrategy(new TargetHighestBidder(this));
 		}
-		
+
 	}
 
 	public Player getNetWinner() {
@@ -142,7 +142,10 @@ public class BlackJack {
 	 * TODO This method should print the statistic of the game when it ends
 	 */
 	protected void printGameStatistics() {
-
+		for (Player player : players) {
+			System.out.println(
+					player.getName() + " won " + player.getWins() + " times and lost " + player.getLosses() + " times");
+		}
 	}
 
 	private String winLoss(Player player, int round) {

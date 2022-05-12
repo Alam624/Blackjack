@@ -22,6 +22,14 @@ public abstract class Player extends Participant {
 		return wins - losses;
 	}
 
+	public int getWins() {
+		return wins;
+	}
+
+	public int getLosses() {
+		return losses;
+	}
+
 	public Player(String name) {
 		super(name);
 	}
