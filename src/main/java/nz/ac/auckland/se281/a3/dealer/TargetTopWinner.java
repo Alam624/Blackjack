@@ -16,13 +16,16 @@ public class TargetTopWinner implements DealerStrategy {
 	@Override
 	public Action action(Hand dealerHand) {
 
+		// if the targeted player doesn't have a BlackJack
 		if (!target.getHand().isBlackJack()) {
+			// dealer plays to beat target
 			if (dealerHand.getScore() >= target.getHand().getScore() || target.getHand().isBust()) {
 				return Action.HOLD;
 			} else {
 				return Action.HIT;
 			}
 		} else {
+			// dealer will play safely
 			if (dealerHand.getScore() >= 17) {
 				return Action.HOLD;
 			} else {
