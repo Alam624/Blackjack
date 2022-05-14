@@ -5,7 +5,7 @@ public class StrategyFactory {
 	public static Strategy createStrategy(String type) {
 		switch (type) {
 		case "R":
-			return new RandomStrategy();
+			return new BotRandomStrategy();
 		case "LR":
 			return new LowRiskStrategy();
 		case "HR":
