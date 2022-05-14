@@ -12,6 +12,11 @@ public class Dealer extends Participant {
 
 	private DealerStrategy strategy;
 
+	/**
+	 * Takes a string parameter name and creates a new Dealer object
+	 * 
+	 * @param name string to assign to the name field in the superclass
+	 */
 	public Dealer(String name) {
 		super(name);
 	}
