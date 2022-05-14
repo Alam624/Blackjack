@@ -9,6 +9,12 @@ public class TargetTopWinner implements DealerStrategy {
 
 	private Player target;
 
+	/**
+	 * Constructor for TargetTopWinner dealer strategy. Sets the targeted player
+	 * using the getNetWinner method of the BlackJack class.
+	 * 
+	 * @param currentGame the current BlackJack game that is being played
+	 */
 	public TargetTopWinner(BlackJack currentGame) {
 		target = currentGame.getNetWinner();
 	}
