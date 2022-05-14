@@ -11,6 +11,7 @@ public class BotRandomStrategy implements Strategy {
 
 	@Override
 	public Action action(Hand hand) {
+		// randomly chooses between HIT or HOLD
 		if (rand.nextBoolean()) {
 			return Action.HOLD;
 		} else {
@@ -21,6 +22,7 @@ public class BotRandomStrategy implements Strategy {
 
 	@Override
 	public int bet() {
+		// randomly bets between 1 and 100
 		return (rand.nextInt(100) + 1);
 	}
 

@@ -14,10 +14,18 @@ public abstract class Player extends Participant {
 	private int wins = 0;
 	private int losses = 0;
 
+	/**
+	 * Method that is called when the player beats the dealer in a round. Increments
+	 * the wins counter variable by one.
+	 */
 	public void addWin() {
 		wins += 1;
 	}
 
+	/**
+	 * Method that is called when the player loses to the dealer in a round.
+	 * Increments the losses counter variable by one.
+	 */
 	public void addLoss() {
 		losses += 1;
 	}

@@ -11,6 +11,7 @@ public class HighRiskStrategy implements Strategy {
 
 	@Override
 	public Action action(Hand hand) {
+		// only hold if score is 19 or greater
 		if (hand.getScore() >= 19) {
 			return Action.HOLD;
 		} else {
@@ -21,6 +22,7 @@ public class HighRiskStrategy implements Strategy {
 
 	@Override
 	public int bet() {
+		// bet randomly between 50 and 100
 		return (rand.nextInt(51) + 50);
 	}
 
