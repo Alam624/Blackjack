@@ -5,7 +5,7 @@ import nz.ac.auckland.se281.a3.Participant.Action;
 
 public interface Strategy {
 
-	public Action Action(Hand hand);
+	public Action action(Hand hand);
 
-	public int Bet();
+	public int bet();
 }

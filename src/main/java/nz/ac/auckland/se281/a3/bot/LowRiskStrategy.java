@@ -10,7 +10,7 @@ public class LowRiskStrategy implements Strategy {
 	Random rand = new Random();
 
 	@Override
-	public nz.ac.auckland.se281.a3.Participant.Action Action(Hand hand) {
+	public nz.ac.auckland.se281.a3.Participant.Action action(Hand hand) {
 		if (hand.getScore() >= 17) {
 			return Action.HOLD;
 		} else {
@@ -20,7 +20,7 @@ public class LowRiskStrategy implements Strategy {
 	}
 
 	@Override
-	public int Bet() {
+	public int bet() {
 		return (rand.nextInt(41) + 10);
 	}
 

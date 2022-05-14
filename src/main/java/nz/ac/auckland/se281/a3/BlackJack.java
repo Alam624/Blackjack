@@ -88,8 +88,8 @@ public class BlackJack {
 		String botStrategyString = getBotStrategy();
 		// create and set Bots strategy here
 		Strategy botStrategy = StrategyFactory.createStrategy(botStrategyString);
-		bot1.SetStrategy(botStrategy);
-		bot2.SetStrategy(botStrategy);
+		bot1.setStrategy(botStrategy);
+		bot2.setStrategy(botStrategy);
 		players.add(bot1);
 		players.add(bot2);
 	}
@@ -101,7 +101,7 @@ public class BlackJack {
 	protected void initDealer() {
 		// set the initial strategy using the Strategy pattern
 		dealer = new Dealer("Dealer");
-		dealer.SetStrategy(new TargetHighestBidder(this));
+		dealer.setStrategy(new TargetHighestBidder(this));
 	}
 
 	/**
@@ -116,9 +116,9 @@ public class BlackJack {
 		System.out.println(winLoss(players.get(1), round));
 		System.out.println(winLoss(players.get(2), round));
 		if (netWinner.getNetWins() >= 2) {
-			dealer.SetStrategy(new TargetTopWinner(this));
+			dealer.setStrategy(new TargetTopWinner(this));
 		} else {
-			dealer.SetStrategy(new TargetHighestBidder(this));
+			dealer.setStrategy(new TargetHighestBidder(this));
 		}
 
 	}

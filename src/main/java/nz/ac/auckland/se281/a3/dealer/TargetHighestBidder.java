@@ -17,7 +17,7 @@ public class TargetHighestBidder implements DealerStrategy {
 	}
 
 	@Override
-	public Action Action(Hand dealerHand) {
+	public Action action(Hand dealerHand) {
 
 		Player target = getMaxBidder(players.get(0), players.get(1), players.get(2));
 		if (!target.getHand().isBlackJack()) {

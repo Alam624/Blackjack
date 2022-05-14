@@ -15,7 +15,7 @@ public class Bot extends Player {
 		super(name);
 	}
 
-	public void SetStrategy(Strategy strategy) {
+	public void setStrategy(Strategy strategy) {
 		this.strategy = strategy;
 	}
 
@@ -25,12 +25,12 @@ public class Bot extends Player {
 
 	@Override
 	public Action decideAction(Hand hand) {
-		return this.strategy.Action(hand);
+		return this.strategy.action(hand);
 	}
 
 	@Override
 	public int makeABet() {
-		bet = this.strategy.Bet();
+		bet = this.strategy.bet();
 		return bet;
 	}
 

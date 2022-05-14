@@ -10,7 +10,7 @@ public class BotRandomStrategy implements Strategy {
 	Random rand = new Random();
 
 	@Override
-	public Action Action(Hand hand) {
+	public Action action(Hand hand) {
 		if (rand.nextBoolean()) {
 			return Action.HOLD;
 		} else {
@@ -20,7 +20,7 @@ public class BotRandomStrategy implements Strategy {
 	}
 
 	@Override
-	public int Bet() {
+	public int bet() {
 		return (rand.nextInt(100) + 1);
 	}
 
