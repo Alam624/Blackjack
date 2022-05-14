@@ -7,7 +7,7 @@ import nz.ac.auckland.se281.a3.Participant.Action;
 
 public class BotRandomStrategy implements Strategy {
 
-	Random rand = new Random();
+	private Random rand = new Random();
 
 	@Override
 	public Action action(Hand hand) {
